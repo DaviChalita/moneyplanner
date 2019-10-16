@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "381029321376",
+    "firebase_url": "https://money-planner-4a876.firebaseio.com",
+    "project_id": "money-planner-4a876",
+    "storage_bucket": "money-planner-4a876.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381029321376:android:cf297f9e1be559a13cd7c5",
+        "android_client_info": {
+          "package_name": "com.dankook.moneyplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381029321376-1vgon1hriusbi812nnch89lll4776gg8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9nFaqJY7kdkLCS8q3KSXX3H4bd-5gJDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381029321376-1vgon1hriusbi812nnch89lll4776gg8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
