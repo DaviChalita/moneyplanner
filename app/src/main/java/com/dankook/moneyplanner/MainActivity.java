@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickEditAccount(View view) {
-        Intent goToEditAccount = new Intent(getApplicationContext(), EditAccountActivity.class);
-        startActivity(goToEditAccount);
+        Intent goToEditAccount = new Intent(this, EditAccountActivity.class);
+        this.startActivity(goToEditAccount);
     }
 
     public void logout(View view) {
