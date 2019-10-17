@@ -1,12 +1,13 @@
 package com.dankook.moneyplanner;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,38 +22,44 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final int RC_SIGN_IN = 1;
-    private EditText txtWelcome;
-
-    List <AuthUI.IdpConfig> providers = Arrays.asList(
-        new AuthUI.IdpConfig.EmailBuilder().build(),
-        new AuthUI.IdpConfig.GoogleBuilder().build()
+    private TextView txtViewUser;
+    List<AuthUI.IdpConfig> providers = Arrays.asList(
+            new AuthUI.IdpConfig.EmailBuilder().build(),
+            new AuthUI.IdpConfig.GoogleBuilder().build()
     );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        txtViewUser = findViewById(R.id.txtViewUser);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                String uid = user.getUid();
-                if(user != null){
-                    Toast.makeText(MainActivity.this, "User signed in", Toast.LENGTH_SHORT).show();
-                }else{
+                if (user != null) {
+                    String name = user.getDisplayName();
+                    txtViewUser.setText("Hello " + name);
+                } else {
                     startActivityForResult(
                             AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setAvailableProviders(providers)
-                            .setIsSmartLockEnabled(false)
-                            .build(),
-                    RC_SIGN_IN);
+                                    .createSignInIntentBuilder()
+                                    .setAvailableProviders(providers)
+                                    .setIsSmartLockEnabled(false)
+                                    .build(),
+                            RC_SIGN_IN);
                 }
             }
         };
     }
 
-    public void logout(View view){
+    public void clickEditAccount(View view) {
+        Intent goToEditAccount = new Intent(getApplicationContext(), EditAccountActivity.class);
+        startActivity(goToEditAccount);
+    }
+
+    public void logout(View view) {
         AuthUI.getInstance()
                 .signOut(this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -65,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         mFirebaseAuth.removeAuthStateListener(mAuthListener);
     }
