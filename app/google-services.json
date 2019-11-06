@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "381029321376-08fu7p71n4uqtpviiba3cm0ufvvr26m9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dankook.moneyplanner",
+            "certificate_hash": "cae8fadb9fdf3b0bd7cc643ef50ebe63afeb68a0"
+          }
+        },
+        {
           "client_id": "381029321376-1vgon1hriusbi812nnch89lll4776gg8.apps.googleusercontent.com",
           "client_type": 3
         }
