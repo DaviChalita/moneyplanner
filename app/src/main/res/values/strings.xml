@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Money Planner</string>
+    <string name="balance" translatable="false">Balance</string>
 </resources>
