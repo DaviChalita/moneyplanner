@@ -1,16 +1,13 @@
 {
-  "user" : {
-    "-LsyQ5QO7i4_kVzvO-T9" : {
-      "balance" : "2",
-      "email" : "chalitameneguelli14@gmail.com",
-      "id" : "-LsyQ5QO7i4_kVzvO-T9",
-      "name" : "Davi Chalita Meneguelli"
-    },
-    "-LszkEY67ciex-2JH0_f" : {
-      "balance" : "9999",
-      "email" : "davichalita@id.uff.br",
-      "id" : "-LszkEY67ciex-2JH0_f",
-      "name" : "Davi Chalita Meneguelli"
-    }
-  }
+    "user":{
+        
+            "email": "chalitameneguelli14@gmail.com",
+            "name": "Davi Chalita",
+            "balance": "100000"
+        },
+	{
+		
+}
+
+        
 }

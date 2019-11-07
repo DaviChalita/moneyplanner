@@ -26,7 +26,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:text="Hello, user"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/btnLogout"
         app:layout_constraintStart_toStartOf="@+id/btnLogout"
@@ -37,20 +36,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Button"
+        android:text="@string/balance"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/button2" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editText2"
         tools:text="@string/balance" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        tools:text="Spends" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Spends"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/editText2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
