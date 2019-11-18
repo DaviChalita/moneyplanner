@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final int RC_SIGN_IN = 1;
     private TextView txtWelcome;
-    private EditText txtBalance;
-    Button btBalance;
+    private EditText txtBalance, txtSpends;
+    Button btBalance, btSpends;
     private FirebaseUser user;
     User userModel;
     private DatabaseReference mDatabase;
-    String email, name, balance, id;
+    String email, name, balance, id, newBalancetxt, spend;
+    float newBalance;
 
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.EmailBuilder().build()
@@ -47,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome = findViewById(R.id.txtViewUser);
-        txtBalance = findViewById(R.id.editText);
-        btBalance = findViewById(R.id.button);
+        txtBalance = findViewById(R.id.editTextBalance);
+        btBalance = findViewById(R.id.buttonBalance);
+        txtSpends = findViewById(R.id.editTextSpends);
+        btSpends = findViewById(R.id.buttonSpends);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -70,10 +73,78 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (user != null) {
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        User userModel = userSnapshot.getValue(User.class);
+                        if (userModel.getEmail().equals(user.getEmail())) {
+                            txtWelcome.setText(userModel.getBalance());
+                        }
+                    }
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         btBalance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addUser();
+            }
+        });
+        btSpends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addSpends();
+            }
+        });
+    }
+
+    private void addSpends() {
+        email = user.getEmail();
+        name = user.getDisplayName();
+        System.out.println(txtWelcome.toString().trim());
+        System.out.println(txtSpends.toString().trim());
+        balance = txtWelcome.getText().toString().trim();
+        spend = txtSpends.getText().toString().trim();
+        newBalance = Float.parseFloat(balance) - Float.parseFloat(spend);
+        newBalancetxt = String.valueOf(newBalance);
+        id = mDatabase.push().getKey();
+        txtWelcome.setText("");
+        userModel = new User(id, email, name, newBalancetxt);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    User userSnapshotValue = userSnapshot.getValue(User.class);
+                    if (userSnapshotValue.getEmail().equals(email)) {
+                        System.out.println(userSnapshotValue.getEmail());
+                        System.out.println(email);
+                        System.out.println(userSnapshotValue.getId());
+                        mDatabase
+                                .child(userSnapshotValue.getId())
+                                .child("balance")
+                                .setValue(newBalancetxt);
+                        txtSpends.getText().clear();
+
+                        return;
+                    }
+                }
+                mDatabase.child(id).setValue(userModel);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -83,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
         name = user.getDisplayName();
         balance = txtBalance.getText().toString().trim();
         id = mDatabase.push().getKey();
-
         userModel = new User(id, email, name, balance);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
                         mDatabase
                                 .child(userSnapshotValue.getId())
                                 .child("balance")
-                                .setValue(txtBalance.getText().toString());
-
+                                .setValue(balance);
+                        txtBalance.getText().clear();
                         return;
                     }
                 }
@@ -139,21 +209,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    User userModel = userSnapshot.getValue(User.class);
-                    if (userModel.getEmail().equals(user.getEmail())) {
-                        txtWelcome.setText(userModel.getBalance());
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser userStart = FirebaseAuth.getInstance().getCurrentUser();
+        System.out.println("#################################################");
+        System.out.println(userStart);
+        if (userStart != null) {
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        User userModel = userSnapshot.getValue(User.class);
+                        if (userModel.getEmail().equals(userStart.getEmail())) {
+                            txtWelcome.setText(userModel.getBalance());
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } else {
+            //dont retrieve the balance
+        }
     }
 }
