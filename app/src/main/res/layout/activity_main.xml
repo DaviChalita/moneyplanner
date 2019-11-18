@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextSpends"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/balance" />
+
+    <Button
+        android:id="@+id/buttonBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/balance"
+        app:layout_constraintStart_toEndOf="@+id/editTextBalance"
+        app:layout_constraintTop_toTopOf="@+id/editTextBalance" />
+
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
@@ -31,44 +52,24 @@
         app:layout_constraintStart_toStartOf="@+id/btnLogout"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/balance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button2" />
-
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextSpends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        tools:text="@string/balance" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/editTextBalance"
         tools:text="Spends" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonSpends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="16dp"
         android:text="Spends"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/editText2" />
+        app:layout_constraintStart_toEndOf="@+id/editTextSpends"
+        app:layout_constraintTop_toTopOf="@+id/editTextSpends" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
