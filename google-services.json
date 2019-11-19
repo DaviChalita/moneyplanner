@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "620481353620",
+    "firebase_url": "https://batata-f4b1a.firebaseio.com",
+    "project_id": "batata-f4b1a",
+    "storage_bucket": "batata-f4b1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620481353620:android:fa1d6359ac3d05f91d6181",
+        "android_client_info": {
+          "package_name": "com.dankook.moneyplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620481353620-g2dg0e6inbnm191qmi4bqfiqlvma09rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPg-174FeQpUZIoP0i3tpyUIvkHNLm_xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620481353620-g2dg0e6inbnm191qmi4bqfiqlvma09rh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
