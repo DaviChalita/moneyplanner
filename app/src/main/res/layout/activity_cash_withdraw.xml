@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CardWithdrawActivity"
+    tools:context=".CashWithdrawActivity"
     android:orientation="vertical"
     android:weightSum="100">
 
@@ -33,19 +33,19 @@
             android:background="@null"/>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="0.5"
-            android:src="@drawable/card"/>
+            android:src="@drawable/cash" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:text="Card withdraw"
+            android:text="Cash withdraw"
             android:textSize="20sp"
             android:textColor="#000000"
             android:gravity="center_vertical"
@@ -268,7 +268,6 @@
 
 
     </LinearLayout>
-
 
 
 

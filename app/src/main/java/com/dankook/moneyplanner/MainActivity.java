@@ -1,11 +1,14 @@
 package com.dankook.moneyplanner;
 
+import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,10 +51,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome = findViewById(R.id.txtViewUser);
-        txtBalance = findViewById(R.id.editTextBalance);
+       /*txtBalance = findViewById(R.id.editTextBalance);
         btBalance = findViewById(R.id.buttonBalance);
         txtSpends = findViewById(R.id.editTextSpends);
-        btSpends = findViewById(R.id.buttonSpends);
+        btSpends = findViewById(R.id.buttonSpends); */
+
+        Button Card_Deposit = (Button) findViewById(R.id.Card_Deposit);
+        Button Card_Withdraw = (Button) findViewById(R.id.Card_Withdraw);
+        Button Cash_Withdraw = (Button) findViewById(R.id.Cash_Withdraw);
+        Button Cash_Deposit = (Button) findViewById(R.id.Cash_Deposit);
+
+
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -81,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
                         if (userModel.getEmail().equals(user.getEmail())) {
-                            txtWelcome.setText(userModel.getBalance());
+                            txtWelcome.setText(userModel.getName()+"'s Total Account");
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@");
+                            System.out.println(userModel.getName());
                         }
                     }
 
@@ -95,7 +107,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btBalance.setOnClickListener(new View.OnClickListener() {
+        Card_Deposit.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Card Deposit page", Toast.LENGTH_LONG).show();
+                Intent myintent = new Intent(MainActivity.this, CardDepositActivity.class);
+                startActivity(myintent);
+                finish();
+            }
+        });
+
+
+        Card_Withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Card Withdraw page", Toast.LENGTH_LONG).show();
+                Intent myintent2 = new Intent(MainActivity.this, CardWithdrawActivity.class);
+                startActivity(myintent2);
+                finish();
+            }
+        });
+
+
+        Cash_Withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
+                Intent myintent3 = new Intent(MainActivity.this, CashWithdrawActivity.class);
+                startActivity(myintent3);
+                finish();
+            }
+        });
+
+
+        Cash_Deposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Cash deposit page", Toast.LENGTH_LONG).show();
+                Intent myintent4 = new Intent(MainActivity.this, CashDepositActivity.class);
+                startActivity(myintent4);
+                finish();
+            }
+        });
+
+        /*btBalance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addUser();
@@ -106,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addSpends();
             }
-        });
+        });*/
+
     }
 
     private void addSpends() {
@@ -119,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
         newBalance = Float.parseFloat(balance) - Float.parseFloat(spend);
         newBalancetxt = String.valueOf(newBalance);
         id = mDatabase.push().getKey();
-        txtWelcome.setText("");
         userModel = new User(id, email, name, newBalancetxt);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -221,7 +276,8 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
                         if (userModel.getEmail().equals(userStart.getEmail())) {
-                            txtWelcome.setText(userModel.getBalance());
+                            txtWelcome.setText(userModel.getName()+"'s Total Account");
+
                         }
                     }
                 }
