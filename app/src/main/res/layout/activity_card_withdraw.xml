@@ -81,26 +81,29 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/food"
-            android:padding="0sp"
-            android:scaleType="centerInside"
-            android:background="@android:color/transparent"/>
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:id="@+id/imgbtnfood"
+            android:background="@drawable/btn_click"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/shopping"
-            android:padding="0sp"
-            android:scaleType="centerInside"
-            android:background="@android:color/transparent"/>
+            android:id="@+id/imgbtnshopping"
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/btn_click"/>
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/leisure"
-            android:padding="0sp"
-            android:scaleType="centerInside"
-            android:background="@android:color/transparent"/>
+            android:id="@+id/imgbtnleisure"
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/btn_click"/>
 
     </LinearLayout>
 
@@ -154,18 +157,20 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/transport"
-            android:padding="0sp"
-            android:scaleType="centerInside"
-            android:background="@android:color/transparent"/>
+            android:id="@+id/imgbtntransport"
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/btn_click"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:src="@drawable/etc"
-            android:padding="0sp"
-            android:scaleType="centerInside"
-            android:background="@android:color/transparent"/>
+            android:id="@+id/imgbtnetc"
+            android:padding="2sp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/btn_click"/>
 
     </LinearLayout>
 
@@ -238,28 +243,23 @@
             android:orientation="vertical"
             android:weightSum="5">
 
-            <TextView
+            <EditText
                 android:id="@+id/Cash_Withdraw"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4.5"
                 android:gravity="center_vertical|left"
                 android:padding="5dp"
-                android:text="0"
+                android:hint="0"
                 android:textSize="20sp"
                 android:textColor="#999999"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:background="#000000"
-                android:layout_marginRight="8dp"/>
 
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_cardwithdraw_ok"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

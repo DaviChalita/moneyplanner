@@ -107,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent myintent = getIntent();
+
         Card_Deposit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {

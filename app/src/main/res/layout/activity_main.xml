@@ -28,9 +28,10 @@
 
                 <TextView
                     android:id="@+id/txtViewUser"
+                    android:text="Total Account"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:layout_marginRight="10dp"
@@ -48,17 +49,19 @@
                         android:id="@+id/btnLogout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.5"
+                        android:layout_weight="1"
                         android:text="Logout"
+                        android:textSize="10dp"
                         android:onClick="logout"/>
 
                     <TextView
                         android:id="@+id/Total_Account"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3.5"
+                        android:layout_weight="4"
                         android:gravity="top|right"
                         android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:text="40,000"
                         android:textColor="#000000"
                         android:textSize="30sp"
@@ -324,7 +327,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="5.3"
                     android:text="Alarm setting"
                     android:textColor="#000000"
                     android:textSize="18dp"
@@ -335,8 +338,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
                     android:layout_marginBottom="10dp">
 
                     <Switch
@@ -358,32 +360,8 @@
             android:layout_height="0dp"
             android:layout_weight="12"
             android:orientation="horizontal"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="3">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:src="@drawable/ct_card"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="Accounts"
-                    android:textSize="15dp"
-                    android:textColor="#000000"
-                    android:gravity="center_horizontal|top"/>
-
-
-            </LinearLayout>
+            android:weightSum="3"
+            android:id="@+id/linctcard">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -391,7 +369,36 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3"
-                android:background="#D1D1D1">
+                android:background="@null">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/ct_card"
+                    android:layout_marginTop="7dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Categories"
+                    android:textSize="15dp"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal|top"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="3"
+                android:background="#D1D1D1"
+                android:id="@+id/linctcircle">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -417,7 +424,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="3"
-                android:background="#D1D1D1">
+                android:background="#D1D1D1"
+                android:id="@+id/linctcalender">
 
                 <ImageView
                     android:layout_width="match_parent"
