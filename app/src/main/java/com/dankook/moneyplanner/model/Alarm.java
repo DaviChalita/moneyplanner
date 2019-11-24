@@ -4,11 +4,11 @@ public class Alarm {
     private String idAlarm;
     private float limit;
 
-    public Alarm(){
+    public Alarm() {
 
     }
 
-    public Alarm(String idAlarm, float limit){
+    public Alarm(String idAlarm, float limit) {
         this.idAlarm = idAlarm;
         this.limit = limit;
     }
@@ -27,5 +27,12 @@ public class Alarm {
 
     public void setLimit(float limit) {
         this.limit = limit;
+    }
+
+    public boolean warnTheUser(float balance, float limit) {
+        if (balance <= limit) {
+            return true;
+        }
+        return false;
     }
 }

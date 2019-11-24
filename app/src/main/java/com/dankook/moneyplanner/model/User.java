@@ -4,17 +4,15 @@ public class User {
     private String id;
     private String email;
     private String name;
-    private String balance;
 
     public User() {
 
     }
 
-    public User(String id, String email, String name, String balance) {
+    public User(String id, String email, String name) {
         this.setId(id);
         this.setEmail(email);
         this.setName(name);
-        this.setBalance(balance);
     }
 
     public String getEmail() {
@@ -33,13 +31,6 @@ public class User {
         this.name = name;
     }
 
-    public String getBalance() {
-        return balance;
-    }
-
-    public void setBalance(String balance) {
-        this.balance = balance;
-    }
 
     public String getId() {
         return id;

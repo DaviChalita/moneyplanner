@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dankook.moneyplanner.model.Account;
 import com.dankook.moneyplanner.model.User;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     String email, name, balance, id, newBalancetxt, spend;
     float newBalance;
+    Account accountModel;
 
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.EmailBuilder().build()
@@ -80,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
+                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        System.out.println(userModel.getId());
+                        System.out.println(userModel.getEmail());
+                        System.out.println(userModel.getName());
+                        Account accountModel = userSnapshot.getValue(Account.class);
+                        System.out.println(accountModel.getId());
+                        System.out.println(accountModel.getBalance());
                         if (userModel.getEmail().equals(user.getEmail())) {
-                            txtWelcome.setText(userModel.getBalance());
+                            txtWelcome.setText(Float.toString(accountModel.getBalance()));
                         }
                     }
 
@@ -120,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
         newBalancetxt = String.valueOf(newBalance);
         id = mDatabase.push().getKey();
         txtWelcome.setText("");
-        userModel = new User(id, email, name, newBalancetxt);
+
+        userModel = new User(id, email, name);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -154,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
         name = user.getDisplayName();
         balance = txtBalance.getText().toString().trim();
         id = mDatabase.push().getKey();
-        userModel = new User(id, email, name, balance);
+        userModel = new User(id, email, name);
+        accountModel = new Account(id, Float.parseFloat(balance), userModel);
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -212,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser userStart = FirebaseAuth.getInstance().getCurrentUser();
         System.out.println("#################################################");
-        System.out.println(userStart);
+        System.out.println(userStart.getEmail());
         if (userStart != null) {
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -220,8 +231,9 @@ public class MainActivity extends AppCompatActivity {
 
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
+                        Account accountModel = userSnapshot.getValue(Account.class);
                         if (userModel.getEmail().equals(userStart.getEmail())) {
-                            txtWelcome.setText(userModel.getBalance());
+                            txtWelcome.setText(Float.toString(accountModel.getBalance()));
                         }
                     }
                 }
