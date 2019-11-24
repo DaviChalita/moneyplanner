@@ -1,13 +1,13 @@
 package com.dankook.moneyplanner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CardWithdrawActivity extends AppCompatActivity {
 
@@ -21,11 +21,11 @@ public class CardWithdrawActivity extends AppCompatActivity {
         ImageButton btnBack = (ImageButton) findViewById(R.id.btnBack);
         Button btncardwithdrawok = (Button) findViewById(R.id.btn_cardwithdraw_ok);
 
-        final ImageButton imgbtnfood = (ImageButton)findViewById(R.id.imgbtnfood);
-        final ImageButton imgbtnshopping = (ImageButton)findViewById(R.id.imgbtnshopping);
-        final ImageButton imgbtnleisure = (ImageButton)findViewById(R.id.imgbtnleisure);
-        final ImageButton imgbtntransport = (ImageButton)findViewById(R.id.imgbtntransport);
-        final ImageButton imgbtnetc = (ImageButton)findViewById(R.id.imgbtnetc);
+        final ImageButton imgbtnfood = (ImageButton) findViewById(R.id.imgbtnfood);
+        final ImageButton imgbtnshopping = (ImageButton) findViewById(R.id.imgbtnshopping);
+        final ImageButton imgbtnleisure = (ImageButton) findViewById(R.id.imgbtnleisure);
+        final ImageButton imgbtntransport = (ImageButton) findViewById(R.id.imgbtntransport);
+        final ImageButton imgbtnetc = (ImageButton) findViewById(R.id.imgbtnetc);
         final int[] CHECK_NUM = new int[1];
         CHECK_NUM[0] = 0;
 
@@ -51,19 +51,16 @@ public class CardWithdrawActivity extends AppCompatActivity {
         });
 
 //when the category is clicked, selected category's edge is marked.
-      ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
+        ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.imgbtnfood:
 
-                        if(CHECK_NUM[0] == 0)
-                        {
+                        if (CHECK_NUM[0] == 0) {
                             imgbtnfood.setSelected(true);
                             CHECK_NUM[0] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             imgbtnfood.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
@@ -71,52 +68,40 @@ public class CardWithdrawActivity extends AppCompatActivity {
 
                     case R.id.imgbtnshopping:
 
-                    if(CHECK_NUM[0] == 0)
-                        {
+                        if (CHECK_NUM[0] == 0) {
                             imgbtnshopping.setSelected(true);
                             CHECK_NUM[0] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             imgbtnshopping.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
                         break;
                     case R.id.imgbtnleisure:
 
-                    if(CHECK_NUM[0] == 0)
-                        {
+                        if (CHECK_NUM[0] == 0) {
                             imgbtnleisure.setSelected(true);
                             CHECK_NUM[0] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             imgbtnleisure.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
                         break;
                     case R.id.imgbtntransport:
 
-                        if(CHECK_NUM[0] == 0)
-                        {
+                        if (CHECK_NUM[0] == 0) {
                             imgbtntransport.setSelected(true);
                             CHECK_NUM[0] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             imgbtntransport.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
                         break;
                     case R.id.imgbtnetc:
 
-                        if(CHECK_NUM[0] == 0)
-                        {
+                        if (CHECK_NUM[0] == 0) {
                             imgbtnetc.setSelected(true);
                             CHECK_NUM[0] = 1;
-                        }
-                        else
-                        {
+                        } else {
                             imgbtnetc.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
@@ -130,8 +115,8 @@ public class CardWithdrawActivity extends AppCompatActivity {
         imgbtnleisure.setOnClickListener(onClickListener);
         imgbtntransport.setOnClickListener(onClickListener);
         imgbtnetc.setOnClickListener(onClickListener);
-        }
     }
+}
 
 
 

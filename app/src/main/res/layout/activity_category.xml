@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoryActivity"
-    android:weightSum="100">
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".CategoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,9 +30,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginRight="10dp"
                     android:text="Total Account"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -42,8 +41,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:weightSum="5"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="5">
 
 
                     <TextView
@@ -85,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="78"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
 
         <com.anychart.AnyChartView
@@ -96,8 +95,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
@@ -106,33 +104,33 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_weight="10"
-        android:orientation="horizontal"
         android:gravity=""
+        android:orientation="horizontal"
         android:weightSum="3">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="3"
             android:background="#D1D1D1"
-            android:onClick="clickAccount">
+            android:onClick="clickAccount"
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:layout_weight="2"
-                android:src="@drawable/account"/>
+                android:src="@drawable/account" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center_horizontal|top"
                 android:text="Accounts"
-                android:textSize="15dp"
                 android:textColor="#000000"
-                android:gravity="center_horizontal|top"/>
+                android:textSize="15dp" />
 
 
         </LinearLayout>
@@ -140,26 +138,26 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="3"
-            android:layout_gravity="bottom">
+            android:weightSum="3">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2.2"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/category"/>
+                android:layout_weight="2.2"
+                android:src="@drawable/category" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
+                android:gravity="center_horizontal|top"
                 android:text="Categories"
-                android:textSize="15dp"
                 android:textColor="#000000"
-                android:gravity="center_horizontal|top"/>
+                android:textSize="15dp" />
 
         </LinearLayout>
 
@@ -167,26 +165,26 @@
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:weightSum="3"
             android:background="#D1D1D1"
-            android:onClick="clickCalendar">
+            android:onClick="clickCalendar"
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
                 android:layout_marginTop="7dp"
-                android:src="@drawable/calender"/>
+                android:layout_weight="2"
+                android:src="@drawable/calender" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:gravity="center_horizontal|top"
                 android:text="Calender"
-                android:textSize="15dp"
                 android:textColor="#000000"
-                android:gravity="center_horizontal|top"/>
+                android:textSize="15dp" />
 
         </LinearLayout>
 

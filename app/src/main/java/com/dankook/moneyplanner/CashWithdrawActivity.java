@@ -1,13 +1,13 @@
 package com.dankook.moneyplanner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CashWithdrawActivity extends AppCompatActivity {
 
@@ -21,11 +21,11 @@ public class CashWithdrawActivity extends AppCompatActivity {
         ImageButton btnBack = (ImageButton) findViewById(R.id.btnBack);
         Button btncashwithdrawok = (Button) findViewById(R.id.btn_cashwithdraw_ok);
 
-        final ImageButton imgbtnfood = (ImageButton)findViewById(R.id.imgbtnfood2);
-        final ImageButton imgbtnshopping = (ImageButton)findViewById(R.id.imgbtnshopping2);
-        final ImageButton imgbtnleisure = (ImageButton)findViewById(R.id.imgbtnleisure2);
-        final ImageButton imgbtntransport = (ImageButton)findViewById(R.id.imgbtntransport2);
-        final ImageButton imgbtnetc = (ImageButton)findViewById(R.id.imgbtnetc2);
+        final ImageButton imgbtnfood = (ImageButton) findViewById(R.id.imgbtnfood2);
+        final ImageButton imgbtnshopping = (ImageButton) findViewById(R.id.imgbtnshopping2);
+        final ImageButton imgbtnleisure = (ImageButton) findViewById(R.id.imgbtnleisure2);
+        final ImageButton imgbtntransport = (ImageButton) findViewById(R.id.imgbtntransport2);
+        final ImageButton imgbtnetc = (ImageButton) findViewById(R.id.imgbtnetc2);
         final int[] CHECK_NUM = new int[1];
         CHECK_NUM[0] = 0;
 
@@ -104,14 +104,15 @@ public class CashWithdrawActivity extends AppCompatActivity {
                             imgbtnetc.setSelected(false);
                             CHECK_NUM[0] = 0;
                         }
-                        break;}
+                        break;
                 }
-            };
-
-                imgbtnfood.setOnClickListener(onClickListener);
-                imgbtnshopping.setOnClickListener(onClickListener);
-                imgbtnleisure.setOnClickListener(onClickListener);
-                imgbtntransport.setOnClickListener(onClickListener);
-                imgbtnetc.setOnClickListener(onClickListener);
             }
-        }
+        };
+
+        imgbtnfood.setOnClickListener(onClickListener);
+        imgbtnshopping.setOnClickListener(onClickListener);
+        imgbtnleisure.setOnClickListener(onClickListener);
+        imgbtntransport.setOnClickListener(onClickListener);
+        imgbtnetc.setOnClickListener(onClickListener);
+    }
+}

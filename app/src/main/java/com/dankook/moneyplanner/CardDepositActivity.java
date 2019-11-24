@@ -1,7 +1,5 @@
 package com.dankook.moneyplanner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CardDepositActivity extends AppCompatActivity {
 
@@ -28,14 +28,14 @@ public class CardDepositActivity extends AppCompatActivity {
 
         Intent myintent = getIntent();
 
-        ll = (LinearLayout)findViewById(R.id.ll);
-        btncardok = (Button)findViewById(R.id.btn_card_ok);
-        et_card_deposit = (EditText)findViewById(R.id.Card_Deposit);
+        ll = (LinearLayout) findViewById(R.id.ll);
+        btncardok = (Button) findViewById(R.id.btn_card_ok);
+        et_card_deposit = (EditText) findViewById(R.id.Card_Deposit);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
 
         ImageButton btnBack = (ImageButton) findViewById(R.id.btnBack);
-        Button btncardOK = (Button) findViewById(R.id.btn_card_ok) ;
+        Button btncardOK = (Button) findViewById(R.id.btn_card_ok);
 
         ll.setOnClickListener(myClickListener);
         btncardok.setOnClickListener(myClickListener);
@@ -63,28 +63,23 @@ public class CardDepositActivity extends AppCompatActivity {
 
     }
 
-    View.OnClickListener myClickListener = new View.OnClickListener()
-    {
+    View.OnClickListener myClickListener = new View.OnClickListener() {
         @Override
-        public void onClick(View v)
-        {
+        public void onClick(View v) {
             hideKeyboard();
-            switch (v.getId())
-            {
-                case R.id.ll :
+            switch (v.getId()) {
+                case R.id.ll:
                     break;
 
-                case R.id.btn_card_ok :
+                case R.id.btn_card_ok:
                     break;
             }
         }
     };
 
-    private void hideKeyboard()
-    {
+    private void hideKeyboard() {
         imm.hideSoftInputFromWindow(et_card_deposit.getWindowToken(), 0);
     }
-
 
 
 }

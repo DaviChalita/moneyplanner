@@ -309,13 +309,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void clickCategories(View view){
+    public void clickCategories(View view) {
         Intent intent = new Intent(this, CategoryActivity.class);
         startActivity(intent);
 
     }
 
-    public void clickCalendar(View view){
+    public void clickCalendar(View view) {
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
 

@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CardDepositActivity"
     android:orientation="vertical"
     android:weightSum="100"
-    android:id="@+id/ll">
+    tools:context=".CardDepositActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
+        android:background="#FDE93D"
         android:orientation="horizontal"
-        android:weightSum="6"
-        android:background="#FDE93D">
-
+        android:weightSum="6">
 
 
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="0.5"
-            android:src="@drawable/back"
+            android:background="@null"
             android:padding="0sp"
             android:scaleType="centerCrop"
-            android:background="@null"/>
+            android:src="@drawable/back" />
 
         <ImageView
             android:layout_width="0dp"
@@ -40,18 +38,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="0.5"
-            android:src="@drawable/card"/>
+            android:src="@drawable/card" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:text="Card deposit"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
             android:layout_marginLeft="7dp"
-            android:layout_marginBottom="2dp"/>
+            android:layout_marginBottom="2dp"
+            android:layout_weight="4"
+            android:gravity="center_vertical"
+            android:text="Card deposit"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -64,9 +62,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
-            android:text="Input your income!"/>
+            android:layout_marginTop="5dp"
+            android:text="Input your income!" />
 
     </LinearLayout>
 
@@ -74,16 +72,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:weightSum="6"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="6">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/won"
             android:padding="4sp"
-            android:scaleType="centerInside"/>
+            android:scaleType="centerInside"
+            android:src="@drawable/won" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -98,11 +96,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="4.5"
                 android:gravity="center_vertical|left"
-                android:padding="5dp"
                 android:hint="0"
+                android:padding="5dp"
                 android:textColor="#999999"
                 android:textSize="20sp" />
-
 
 
         </LinearLayout>
@@ -113,7 +110,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="OK" />
-
 
 
     </LinearLayout>

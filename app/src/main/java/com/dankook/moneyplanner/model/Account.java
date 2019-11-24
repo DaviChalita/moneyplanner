@@ -5,11 +5,11 @@ public class Account {
     private float balance;
     private User user;
 
-    public Account(){
+    public Account() {
 
     }
 
-    public Account(String id, float balance, User user){
+    public Account(String id, float balance, User user) {
         this.id = id;
         this.balance = balance;
         this.user = user;
@@ -39,12 +39,12 @@ public class Account {
         this.user = user;
     }
 
-    public float spend(float spendValue){
+    public float spend(float spendValue) {
         this.balance -= spendValue;
         return this.balance;
     }
 
-    public float income(float incomeValue){
+    public float income(float incomeValue) {
         this.balance = incomeValue;
         return this.balance;
     }

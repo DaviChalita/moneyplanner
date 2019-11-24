@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CalendarActivity"/>
+       <activity android:name=".AlarmActivity"/>
         <activity android:name=".CategoryActivity"/>
         <activity android:name=".CashDepositActivity"/>
         <activity android:name=".CashWithdrawActivity" />

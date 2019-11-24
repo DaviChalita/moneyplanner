@@ -366,9 +366,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@null"
+                android:onClick="clickAccount"
                 android:orientation="vertical"
-                android:weightSum="3"
-                android:onClick="clickAccount">
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -395,9 +395,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#D1D1D1"
+                android:onClick="clickCategories"
                 android:orientation="vertical"
-                android:weightSum="3"
-                android:onClick="clickCategories">
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -423,9 +423,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#D1D1D1"
+                android:onClick="clickCalendar"
                 android:orientation="vertical"
-                android:weightSum="3"
-                android:onClick="clickCalendar">
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"

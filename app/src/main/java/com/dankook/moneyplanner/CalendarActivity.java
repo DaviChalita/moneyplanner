@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dankook.moneyplanner.R;
-
 public class CalendarActivity extends AppCompatActivity {
 
     CalendarView calendarView;
@@ -37,17 +35,17 @@ public class CalendarActivity extends AppCompatActivity {
 
     }
 
-    public void clickCategories(View view){
+    public void clickCategories(View view) {
         Intent intent = new Intent(this, CategoryActivity.class);
         startActivity(intent);
 
     }
 
-    public void clickAccount(View view){
+    public void clickAccount(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
-    
-    
+
+
 }
