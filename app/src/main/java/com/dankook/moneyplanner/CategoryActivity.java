@@ -1,8 +1,10 @@
 package com.dankook.moneyplanner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -20,7 +22,7 @@ public class CategoryActivity extends AppCompatActivity {
     Scanner scan = new Scanner(System.in);
 
     String[] category = {"Traffic", "Food", "Leisure", "shopping", "etc"};
-    int[] value = {15, 20 , 40, 50, 35};
+    int[] value = {15, 20, 40, 50, 35};
     //  the value must be downloaded from firebase data
 
     @Override
@@ -33,7 +35,7 @@ public class CategoryActivity extends AppCompatActivity {
         setupPieChart();
     }
 
-    public void setupPieChart(){
+    public void setupPieChart() {
 
         Pie pie = AnyChart.pie();
         List<DataEntry> dataEntries = new ArrayList<>();
@@ -44,7 +46,7 @@ public class CategoryActivity extends AppCompatActivity {
         }
 */
 
-        for(int i = 0; i<category.length; i++){
+        for (int i = 0; i < category.length; i++) {
             dataEntries.add(new ValueDataEntry(category[i], value[i]));
         }
 
@@ -53,5 +55,16 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
+    public void clickAccount(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
+    }
+
+    public void clickCalendar(View view) {
+        Intent intent = new Intent(this, CalendarActivity.class);
+        startActivity(intent);
+
+    }
 }
+

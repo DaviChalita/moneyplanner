@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:weightSum="100">
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,13 +27,13 @@
 
                 <TextView
                     android:id="@+id/txtViewUser"
-                    android:text="Total Account"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginRight="10dp"
+                    android:text="Total Account"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -42,26 +41,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:weightSum="5"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="5">
 
                     <Button
                         android:id="@+id/btnLogout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="logout"
                         android:text="Logout"
-                        android:textSize="10dp"
-                        android:onClick="logout"/>
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/Total_Account"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="4"
                         android:gravity="top|right"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
                         android:text="40,000"
                         android:textColor="#000000"
                         android:textSize="30sp"
@@ -76,40 +75,40 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_weight="1"
-            >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:src="@drawable/user" />
         </LinearLayout>
 
-    </LinearLayout>>
+    </LinearLayout>
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="88"
-        android:weightSum="88"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="88">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="30"
             android:background="#FDE93D"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:weightSum="40"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="40">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,26 +123,26 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/card"/>
+                    android:src="@drawable/card" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="9"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
                     android:text="Card"
-                    android:textSize="20sp"
                     android:textColor="#000000"
-                    android:gravity="center_vertical"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#FFFFFF"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:background="#FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,11 +153,11 @@
                     android:id="@+id/Card_Account"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
                     android:text="20,000"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal|center_vertical"/>
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -166,14 +165,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#C0CCDA"/>
+                android:background="#C0CCDA" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="13"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/Card_Deposit"
@@ -181,12 +180,12 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="deposit"/>
+                    android:text="deposit" />
 
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#C0CCDA"/>
+                    android:background="#C0CCDA" />
 
                 <Button
                     android:id="@+id/Card_Withdraw"
@@ -194,7 +193,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="withdraw"/>
+                    android:text="withdraw" />
 
 
             </LinearLayout>
@@ -205,14 +204,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="30"
             android:background="#FDE93D"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:weightSum="40"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="40">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -227,26 +226,26 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/cash"/>
+                    android:src="@drawable/cash" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="9"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
                     android:text="Cash"
-                    android:textSize="20sp"
                     android:textColor="#000000"
-                    android:gravity="center_vertical"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#FFFFFF"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:background="#FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -257,11 +256,11 @@
                     android:id="@+id/Cash_Account"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
                     android:text="20,000"
-                    android:textStyle="bold"
-                    android:textSize="30sp"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal|center_vertical"/>
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -269,14 +268,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#C0CCDA"/>
+                android:background="#C0CCDA" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="13"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/Cash_Deposit"
@@ -284,12 +283,12 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="deposit"/>
+                    android:text="deposit" />
 
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="#C0CCDA"/>
+                    android:background="#C0CCDA" />
 
                 <Button
                     android:id="@+id/Cash_Withdraw"
@@ -297,7 +296,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="withdraw"/>
+                    android:text="withdraw" />
 
 
             </LinearLayout>
@@ -314,8 +313,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2">
-            </LinearLayout>
+                android:layout_weight="2"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -327,19 +325,19 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="8dp"
                     android:layout_weight="5.3"
+                    android:gravity="right"
                     android:text="Alarm setting"
                     android:textColor="#000000"
-                    android:textSize="18dp"
-                    android:gravity="right"
-                    android:layout_marginRight="8dp"/>
+                    android:textSize="18dp" />
 
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.7">
 
                     <Switch
                         android:id="@+id/Alarm_switch"
@@ -356,92 +354,94 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linctcard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="12"
             android:orientation="horizontal"
-            android:weightSum="3"
-            android:id="@+id/linctcard">
+            android:weightSum="3">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@null"
+                android:onClick="clickAccount"
                 android:orientation="vertical"
-                android:weightSum="3"
-                android:background="@null">
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="2"
-                    android:src="@drawable/ct_card"
-                    android:layout_marginTop="7dp" />
+                    android:src="@drawable/ct_card" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Categories"
-                    android:textSize="15dp"
+                    android:gravity="center_horizontal|top"
+                    android:text="Account"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal|top"/>
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
 
-
             <LinearLayout
+                android:id="@+id/linctcircle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="3"
                 android:background="#D1D1D1"
-                android:id="@+id/linctcircle">
+                android:onClick="clickCategories"
+                android:orientation="vertical"
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="2"
-                    android:src="@drawable/ct_circle"
-                    android:layout_marginTop="7dp"/>
+                    android:src="@drawable/ct_circle" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal|top"
                     android:text="Categories"
-                    android:textSize="15dp"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal|top"/>
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linctcalender"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:weightSum="3"
                 android:background="#D1D1D1"
-                android:id="@+id/linctcalender">
+                android:onClick="clickCalendar"
+                android:orientation="vertical"
+                android:weightSum="3">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="7dp"
                     android:layout_weight="2"
-                    android:src="@drawable/ct_calender"
-                    android:layout_marginTop="7dp"/>
+                    android:src="@drawable/ct_calender" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Calender"
-                    android:textSize="15dp"
+                    android:gravity="center_horizontal|top"
+                    android:text="Calendar"
                     android:textColor="#000000"
-                    android:gravity="center_horizontal|top"/>
+                    android:textSize="15dp" />
 
             </LinearLayout>
 

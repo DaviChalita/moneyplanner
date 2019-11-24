@@ -1,36 +1,29 @@
 package com.dankook.moneyplanner.model;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class Calendar extends AppCompatActivity {
-
+public class AccountAnalysis {
     private String year;
     private String month;
     private String day;
     private String dayOfWeek;
     private float totalTheDay;
     private float totalTheMonth;
-    private float totalTheIncome;
     private float totalTheSpend;
+    private float totalTheIncome;
 
-
-    public Calendar() {
-
+    public AccountAnalysis() {
     }
 
-    public Calendar(
-            String year, String month, String day,
-            String dayOfWeek, float totalTheDay, float totalTheMonth,
-            float totalTheSpend, float totalTheIncome) {
-
-        this.setYear(year);
-        this.setMonth(month);
-        this.setDay(day);
-        this.setDayOfWeek(dayOfWeek);
-        this.setTotalTheDay(totalTheDay);
-        this.setTotalTheMonth(totalTheMonth);
-        this.setTotalTheSpend(totalTheSpend);
-        this.setTotalTheIncome(totalTheIncome);
+    public AccountAnalysis(String year, String month, String day, String dayOfWeek,
+                           float totalTheDay, float totalTheMonth, float totalTheSpend,
+                           float totalTheIncome) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.dayOfWeek = dayOfWeek;
+        this.totalTheDay = totalTheDay;
+        this.totalTheMonth = totalTheMonth;
+        this.totalTheSpend = totalTheSpend;
+        this.totalTheIncome = totalTheIncome;
     }
 
     public String getYear() {
@@ -81,19 +74,19 @@ public class Calendar extends AppCompatActivity {
         this.totalTheMonth = totalTheMonth;
     }
 
-    public float getTotalTheIncome() {
-        return totalTheIncome;
-    }
-
-    public void setTotalTheIncome(float totalTheIncome) {
-        this.totalTheIncome = totalTheIncome;
-    }
-
     public float getTotalTheSpend() {
         return totalTheSpend;
     }
 
     public void setTotalTheSpend(float totalTheSpend) {
         this.totalTheSpend = totalTheSpend;
+    }
+
+    public float getTotalTheIncome() {
+        return totalTheIncome;
+    }
+
+    public void setTotalTheIncome(float totalTheIncome) {
+        this.totalTheIncome = totalTheIncome;
     }
 }
