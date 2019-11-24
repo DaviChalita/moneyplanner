@@ -307,4 +307,19 @@ public class MainActivity extends AppCompatActivity {
             //dont retrieve the balance
         }
     }
+
+
+    public void clickCategories(View view){
+        Intent intent = new Intent(this, CategoryActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void clickCalendar(View view){
+        Intent intent = new Intent(this, CalendarActivity.class);
+        startActivity(intent);
+
+    }
+
 }
+
