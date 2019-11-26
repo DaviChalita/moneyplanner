@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final int RC_SIGN_IN = 1;
-    private TextView txtWelcome;
+    private TextView txtWelcome, txtCash;
     private EditText txtBalance, txtSpends;
     Button btBalance, btSpends;
     private FirebaseUser user;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     String email, name, balance, id, newBalancetxt, spend;
     float newBalance;
     Account accountModel;
+    Switch switchAlarm;
 
     List<AuthUI.IdpConfig> providers = Arrays.asList(
             new AuthUI.IdpConfig.EmailBuilder().build()
@@ -51,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWelcome = findViewById(R.id.txtViewUser);
-       /*txtBalance = findViewById(R.id.editTextBalance);
+        switchAlarm = findViewById(R.id.Alarm_switch);
+        txtCash = findViewById(R.id.Card_Account);
+        /*txtBalance = findViewById(R.id.editTextBalance);
         btBalance = findViewById(R.id.buttonBalance);
         txtSpends = findViewById(R.id.editTextSpends);
         btSpends = findViewById(R.id.buttonSpends); */
 
         Button Card_Deposit = (Button) findViewById(R.id.Card_Deposit);
         Button Card_Withdraw = (Button) findViewById(R.id.Card_Withdraw);
-        Button Cash_Withdraw = (Button) findViewById(R.id.Cash_Withdraw);
-        Button Cash_Deposit = (Button) findViewById(R.id.Cash_Deposit);
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -98,8 +100,8 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println(accountModel.getId());
                         System.out.println(accountModel.getBalance());
                         if (userModel.getEmail().equals(user.getEmail())) {
-                            txtWelcome.setText(userModel.getName() + "'s Total Account");
-
+                            txtWelcome.setText(userModel.getName() + "'s Account");
+                            txtCash.setText(Float.toString(accountModel.getBalance()));
                         }
                     }
 
@@ -119,41 +121,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Card Deposit page", Toast.LENGTH_LONG).show();
-                Intent myintent = new Intent(MainActivity.this, CardDepositActivity.class);
+                Intent myintent = new Intent(MainActivity.this, CashDepositActivity.class);
                 startActivity(myintent);
-                finish();
-            }
-        });
-
-
-        Card_Withdraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Card Withdraw page", Toast.LENGTH_LONG).show();
-                Intent myintent2 = new Intent(MainActivity.this, CardWithdrawActivity.class);
-                startActivity(myintent2);
-                finish();
-            }
-        });
-
-
-        Cash_Withdraw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
-                Intent myintent3 = new Intent(MainActivity.this, CashWithdrawActivity.class);
-                startActivity(myintent3);
-                finish();
-            }
-        });
-
-
-        Cash_Deposit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Cash deposit page", Toast.LENGTH_LONG).show();
-                Intent myintent4 = new Intent(MainActivity.this, CashDepositActivity.class);
-                startActivity(myintent4);
                 finish();
             }
         });
@@ -318,6 +287,14 @@ public class MainActivity extends AppCompatActivity {
     public void clickCalendar(View view) {
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
+
+    }
+
+    public void clickAlarmSwitch(View view) {
+        if (switchAlarm.isChecked()) {
+            Intent intent = new Intent(this, AlarmActivity.class);
+            startActivity(intent);
+        }
 
     }
 
