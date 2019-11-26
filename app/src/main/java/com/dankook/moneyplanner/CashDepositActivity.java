@@ -16,29 +16,30 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CashDepositActivity extends AppCompatActivity {
 
     InputMethodManager imm;
-    EditText et_cash_deposit;
-    Button btncashok;
+    EditText et_card_deposit;
+    Button btncardok;
     LinearLayout ll;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cash_deposit);
+        setContentView(R.layout.activity_card_deposit);
+
+        Intent myintent = getIntent();
 
         ll = (LinearLayout) findViewById(R.id.ll);
-        btncashok = (Button) findViewById(R.id.btn_cash_ok);
-        et_cash_deposit = (EditText) findViewById(R.id.Cash_Deposit);
+        btncardok = (Button) findViewById(R.id.btn_card_ok);
+        et_card_deposit = (EditText) findViewById(R.id.Card_Deposit);
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
 
-        Intent myintent4 = getIntent();
-
         ImageButton btnBack = (ImageButton) findViewById(R.id.btnBack);
-        Button btncashok = (Button) findViewById(R.id.btn_cash_ok);
+        Button btncardOK = (Button) findViewById(R.id.btn_card_ok);
 
         ll.setOnClickListener(myClickListener);
-        btncashok.setOnClickListener(myClickListener);
+        btncardok.setOnClickListener(myClickListener);
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +47,15 @@ public class CashDepositActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Back", Toast.LENGTH_LONG).show();
                 Intent myintent = new Intent(CashDepositActivity.this, MainActivity.class);
                 startActivity(myintent);
-                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
 
-        btncashok.setOnClickListener(new View.OnClickListener() {
+        btncardOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Back", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
                 Intent myintent = new Intent(CashDepositActivity.this, MainActivity.class);
                 startActivity(myintent);
                 finish();
@@ -70,14 +72,14 @@ public class CashDepositActivity extends AppCompatActivity {
                 case R.id.ll:
                     break;
 
-                case R.id.btn_cash_ok:
+                case R.id.btn_card_ok:
                     break;
             }
         }
     };
 
     private void hideKeyboard() {
-        imm.hideSoftInputFromWindow(et_cash_deposit.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(et_card_deposit.getWindowToken(), 0);
     }
 
 
