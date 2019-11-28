@@ -25,10 +25,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -54,15 +55,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txtWelcome = findViewById(R.id.txtViewUser);
         switchAlarm = findViewById(R.id.Alarm_switch);
-        txtCash = findViewById(R.id.Card_Account);
+        txtCash = findViewById(R.id.Cash_Account);
         /*txtBalance = findViewById(R.id.editTextBalance);
         btBalance = findViewById(R.id.buttonBalance);
         txtSpends = findViewById(R.id.editTextSpends);
         btSpends = findViewById(R.id.buttonSpends); */
 
-        Button Card_Deposit = (Button) findViewById(R.id.Card_Deposit);
-        Button Card_Withdraw = (Button) findViewById(R.id.Card_Withdraw);
-
+        Button Cash_Deposit = (Button) findViewById(R.id.Cash_Deposit);
+        Button Cash_Withdraw = (Button) findViewById(R.id.Cash_Withdraw);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
@@ -72,8 +72,10 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(MainActivity.this, "User signed in", Toast.LENGTH_SHORT).show();
-
+                    userModel = new User();
+                    userModel.setId(mDatabase.push().getKey());
+                    userModel.setEmail(user.getEmail());
+                    userModel.setName(user.getDisplayName());
                 } else {
                     startActivityForResult(
                             AuthUI.getInstance()
@@ -86,22 +88,24 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
+       /* mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (user != null) {
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
-                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        System.out.println(userModel.getId());
-                        System.out.println(userModel.getEmail());
-                        System.out.println(userModel.getName());
-                        Account accountModel = userSnapshot.getValue(Account.class);
-                        System.out.println(accountModel.getId());
-                        System.out.println(accountModel.getBalance());
                         if (userModel.getEmail().equals(user.getEmail())) {
-                            txtWelcome.setText(userModel.getName() + "'s Account");
+                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            System.out.println(userModel.getId());
+                            System.out.println(userModel.getEmail());
+                            System.out.println(userModel.getName());
+                            accountModel = userSnapshot.getValue(Account.class);
+                            System.out.println(accountModel.getId());
+                            System.out.println(accountModel.getBalance());
+
+                            txtWelcome.setText(userModel.getName() + "'s");
                             txtCash.setText(Float.toString(accountModel.getBalance()));
+                            return;
                         }
                     }
 
@@ -113,17 +117,16 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
-        Intent myintent = getIntent();
+        //  addUser();
 
-        Card_Deposit.setOnClickListener(new Button.OnClickListener() {
+        Cash_Withdraw.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Card Deposit page", Toast.LENGTH_LONG).show();
-                Intent myintent = new Intent(MainActivity.this, CashDepositActivity.class);
+                Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
+                Intent myintent = new Intent(MainActivity.this, CashWithdrawActivity.class);
                 startActivity(myintent);
-                finish();
             }
         });
 
@@ -142,53 +145,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void addSpends() {
-        email = user.getEmail();
-        name = user.getDisplayName();
-        System.out.println(txtWelcome.toString().trim());
-        System.out.println(txtSpends.toString().trim());
-        balance = txtWelcome.getText().toString().trim();
-        spend = txtSpends.getText().toString().trim();
-        newBalance = Float.parseFloat(balance) - Float.parseFloat(spend);
-        newBalancetxt = String.valueOf(newBalance);
-        id = mDatabase.push().getKey();
 
-        txtWelcome.setText("");
+    public void clickDeposit(View view) {
+        Toast.makeText(getApplicationContext(), "Cash Deposit page", Toast.LENGTH_LONG).show();
+        //addExtra, save the user in firebase with balance = 0 if null
+        Intent myIntent = new Intent(MainActivity.this, CashDepositActivity.class);
+        System.out.println("###############################");
+        System.out.println(userModel.getEmail());
+        System.out.println(userModel.getName());
+        System.out.println(accountModel.getBalance());
+        //System.out.println(accountModel.getBalance());
+        Bundle extras = new Bundle();
+        extras.putSerializable("user", userModel);
+        extras.putSerializable("account", accountModel);
+        //myIntent.putExtra("user", userModel);
+        //myIntent.putExtra("account", accountModel);
+        myIntent.putExtras(extras);
+        startActivity(myIntent);
 
-        userModel = new User(id, email, name);
-
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    User userSnapshotValue = userSnapshot.getValue(User.class);
-                    if (userSnapshotValue.getEmail().equals(email)) {
-                        System.out.println(userSnapshotValue.getEmail());
-                        System.out.println(email);
-                        System.out.println(userSnapshotValue.getId());
-                        mDatabase
-                                .child(userSnapshotValue.getId())
-                                .child("balance")
-                                .setValue(newBalancetxt);
-                        txtSpends.getText().clear();
-
-                        return;
-                    }
-                }
-                mDatabase.child(id).setValue(userModel);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
-    private void addUser() {
+
+ /*   private void addUser() {
         email = user.getEmail();
         name = user.getDisplayName();
-        balance = txtBalance.getText().toString().trim();
+        balance = "0";
         id = mDatabase.push().getKey();
         userModel = new User(id, email, name);
         accountModel = new Account(id, Float.parseFloat(balance), userModel);
@@ -198,18 +179,16 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     User userSnapshotValue = userSnapshot.getValue(User.class);
                     if (userSnapshotValue.getEmail().equals(email)) {
-                        System.out.println(userSnapshotValue.getEmail());
-                        System.out.println(email);
-                        System.out.println(userSnapshotValue.getId());
-                        mDatabase
-                                .child(userSnapshotValue.getId())
-                                .child("balance")
-                                .setValue(balance);
-                        txtBalance.getText().clear();
+                        //System.out.println(userSnapshotValue.getEmail());
+                        //System.out.println(email);
+                        //System.out.println(userSnapshotValue.getId());
+                        //  mDatabase.child(userSnapshotValue.getId()).child("balance").setValue(balance);
+                        //txtBalance.getText().clear();
                         return;
                     }
                 }
                 mDatabase.child(id).setValue(userModel);
+                mDatabase.child(id).child("balance").setValue(balance);
             }
 
             @Override
@@ -217,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     public void logout(View view) {
         AuthUI.getInstance()
@@ -235,6 +214,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthListener);
+        //txtCash.setText(Float.toString(accountModel.getBalance()));
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (user != null) {
+                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                        User userModel = userSnapshot.getValue(User.class);
+                        if (userModel.getEmail().equals(user.getEmail())) {
+                            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                            System.out.println(userModel.getId());
+                            System.out.println(userModel.getEmail());
+                            System.out.println(userModel.getName());
+                            accountModel = userSnapshot.getValue(Account.class);
+                            System.out.println(accountModel.getId());
+                            System.out.println(accountModel.getBalance());
+
+                            txtWelcome.setText(userModel.getName() + "'s");
+                            txtCash.setText(Float.toString(accountModel.getBalance()));
+                            return;
+                        }
+                    }
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -246,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAuth = FirebaseAuth.getInstance();
+        /*mFirebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser userStart = FirebaseAuth.getInstance().getCurrentUser();
         System.out.println("#################################################");
         System.out.println(userStart.getEmail());
@@ -257,11 +267,12 @@ public class MainActivity extends AppCompatActivity {
 
                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                         User userModel = userSnapshot.getValue(User.class);
-                        Account accountModel = userSnapshot.getValue(Account.class);
+                        accountModel = userSnapshot.getValue(Account.class);
                         if (userModel.getEmail().equals(userStart.getEmail())) {
 
                             txtWelcome.setText(userModel.getName() + "'s Total Account");
 
+                            txtCash.setText(Float.toString(accountModel.getBalance()));
                         }
                     }
                 }
@@ -274,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } else {
             //dont retrieve the balance
-        }
+        }*/
     }
 
 

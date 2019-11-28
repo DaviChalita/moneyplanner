@@ -14,7 +14,7 @@ public class CashWithdrawActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_withdraw);
+        setContentView(R.layout.activity_cash_withdraw);
 
         Intent myintent2 = getIntent();
 
