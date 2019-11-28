@@ -70,136 +70,135 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_weight="13"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imgbtnfood"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_click"
-            android:padding="2sp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/food" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-        <ImageButton
-            android:id="@+id/imgbtnshopping"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_click"
-            android:padding="2sp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/shopping" />
+            <RadioButton
+                android:id="@+id/imgbtnfood"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_click"
+                android:padding="2sp"
+                android:scaleType="centerInside"
+                android:button="@drawable/radio_button_food" />
 
-        <ImageButton
-            android:id="@+id/imgbtnleisure"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_click"
-            android:padding="2sp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/leisure" />
+            <RadioButton
+                android:id="@+id/imgbtnshopping"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_click"
+                android:padding="2sp"
+                android:scaleType="centerInside"
+                android:button="@drawable/radio_button_shopping" />
 
-    </LinearLayout>
+            <RadioButton
+                android:id="@+id/imgbtnleisure"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_click"
+                android:padding="2sp"
+                android:scaleType="centerInside"
+                android:button="@drawable/radio_button_leisure">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:weightSum="3">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/imgbtntransport"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_click"
+                android:padding="2sp"
+                android:scaleType="centerInside"
+                android:button="@drawable/radio_button_transport" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="food"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <RadioButton
+                android:id="@+id/imgbtnetc"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_click"
+                android:padding="2sp"
+                android:scaleType="centerInside"
+                android:button="@drawable/radio_button_etc" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="shopping"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+        </RadioGroup>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="leisure"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="10"
-        android:orientation="horizontal"
-        android:weightSum="3">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="food"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/imgbtntransport"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_click"
-            android:padding="2sp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/transport" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="shopping"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/imgbtnetc"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_click"
-            android:padding="2sp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/etc" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="leisure"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="transport"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal"
-        android:weightSum="3">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="etc"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="transportation"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="etc"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
+
+
 
     <TextView
         android:layout_width="match_parent"

@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_weight="12"
+        android:layout_height="0dp"
+        android:layout_weight="10"
         android:background="#FFEB3B"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -38,14 +38,14 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_weight="12" />
+        android:layout_height="0dp"
+        android:layout_weight="45" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_weight="12"
+        android:layout_height="0dp"
+        android:layout_weight="33"
         android:orientation="vertical"
         android:weightSum="3">
 
@@ -113,7 +113,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_weight="12"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -124,6 +124,7 @@
             android:layout_weight="1"
             android:onClick="clickAccount"
             android:orientation="vertical"
+            android:background="#D1D1D1"
             android:weightSum="3">
 
             <ImageView
@@ -175,7 +176,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#D1D1D1"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:weightSum="3">
 
