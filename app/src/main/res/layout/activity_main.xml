@@ -180,7 +180,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="withdraw" />
+                    android:text="withdraw"
+                    android:onClick="clickWithdraw"/>
 
 
             </LinearLayout>

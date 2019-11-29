@@ -3,18 +3,28 @@ package com.dankook.moneyplanner.model;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-    public static String id;
-    public static float balance;
-    public static User user;
+    private String id;
+    private float balance;
+    private float spend;
+    private User user;
 
     public Account() {
 
     }
 
-    public Account(String id, float balance, User user) {
+    public Account(String id, float balance, float spend, User user) {
         this.id = id;
         this.balance = balance;
+        this.spend = spend;
         this.user = user;
+    }
+
+    public float getSpend() {
+        return spend;
+    }
+
+    public void setSpend(String spend) {
+        this.spend = Float.parseFloat(spend);
     }
 
     public String getId() {
