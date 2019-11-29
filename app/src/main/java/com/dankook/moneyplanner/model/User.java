@@ -1,9 +1,11 @@
 package com.dankook.moneyplanner.model;
 
-public class User {
-    private String id;
-    private String email;
-    private String name;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    public static String id;
+    public static String email;
+    public static String name;
 
     public User() {
 
