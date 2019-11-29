@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         //  addUser();
 
-        Cash_Withdraw.setOnClickListener(new Button.OnClickListener() {
+     /*   Cash_Withdraw.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
                 Intent myintent = new Intent(MainActivity.this, CashWithdrawActivity.class);
                 startActivity(myintent);
             }
-        });
+        });*/
 
         /*btBalance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +163,24 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         myIntent.putExtras(extras);
         startActivity(myIntent);
 
+    }
+
+    public void clickWithdraw(View view) {
+        Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
+        //addExtra, save the user in firebase with balance = 0 if null
+        Intent myIntent = new Intent(MainActivity.this, CashWithdrawActivity.class);
+        System.out.println("$$$$$$$$$$$$$$$$");
+        System.out.println(userModel);
+        System.out.println(userModel.getEmail());
+        System.out.println(userModel.getName());
+        System.out.println(accountModel.getBalance());
+        Bundle extras = new Bundle();
+        extras.putSerializable("user", userModel);
+        extras.putSerializable("account", accountModel);
+        myIntent.putExtra("user", userModel);
+        myIntent.putExtra("account", accountModel);
+        myIntent.putExtras(extras);
+        startActivity(myIntent);
     }
 
 
@@ -229,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             accountModel = userSnapshot.getValue(Account.class);
                             System.out.println(accountModel.getId());
                             System.out.println(accountModel.getBalance());
-
+                            System.out.println(accountModel.getSpend());
                             txtWelcome.setText(userModel.getName() + "'s");
                             txtCash.setText(Float.toString(accountModel.getBalance()));
                             return;
