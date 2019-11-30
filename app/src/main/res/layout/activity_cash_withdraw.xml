@@ -19,8 +19,8 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -29,6 +29,8 @@
             android:padding="0sp"
             android:scaleType="centerCrop"
             android:src="@drawable/back" />
+
+
 
         <ImageView
             android:layout_width="0dp"
