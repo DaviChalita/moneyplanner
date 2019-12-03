@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dankook.moneyplanner.model.Account;
 import com.dankook.moneyplanner.model.Alarm;
+import com.dankook.moneyplanner.model.Category;
 import com.dankook.moneyplanner.model.User;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,13 +39,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final int RC_SIGN_IN = 1;
     private TextView txtWelcome, txtCash;
-    private EditText txtBalance, txtSpends;
-    Button btBalance, btSpends;
     private FirebaseUser user;
+    private TextView txtTotalSpent;
     User userModel;
     private DatabaseReference mDatabase;
-    String email, name, balance, id, newBalancetxt, spend;
-    float newBalance;
     Account accountModel;
     Switch switchAlarm;
     Alarm alarmModel;
@@ -53,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             new AuthUI.IdpConfig.EmailBuilder().build()
     );
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +59,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         txtWelcome = findViewById(R.id.txtViewUser);
         switchAlarm = findViewById(R.id.Alarm_switch);
         txtCash = findViewById(R.id.Cash_Account);
-        Button Cash_Deposit = (Button) findViewById(R.id.Cash_Deposit);
-        Button Cash_Withdraw = (Button) findViewById(R.id.Cash_Withdraw);
-
+        txtTotalSpent = findViewById(R.id.textViewTotalSpent);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -101,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     public void clickWithdraw(View view) {
+        System.out.println("account model balance "+accountModel.getBalance());
         Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
         Intent myIntent = new Intent(MainActivity.this, CashWithdrawActivity.class);
         Bundle extras = new Bundle();
@@ -110,39 +108,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         myIntent.putExtras(extras);
         startActivity(myIntent);
     }
-
-
- /*   private void addUser() {
-        email = user.getEmail();
-        name = user.getDisplayName();
-        balance = "0";
-        id = mDatabase.push().getKey();
-        userModel = new User(id, email, name);
-        accountModel = new Account(id, Float.parseFloat(balance), userModel);
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    User userSnapshotValue = userSnapshot.getValue(User.class);
-                    if (userSnapshotValue.getEmail().equals(email)) {
-                        //System.out.println(userSnapshotValue.getEmail());
-                        //System.out.println(email);
-                        //System.out.println(userSnapshotValue.getId());
-                        //  mDatabase.child(userSnapshotValue.getId()).child("balance").setValue(balance);
-                        //txtBalance.getText().clear();
-                        return;
-                    }
-                }
-                mDatabase.child(id).setValue(userModel);
-                mDatabase.child(id).child("balance").setValue(balance);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }*/
 
     public void logout(View view) {
         AuthUI.getInstance()
@@ -173,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             accountModel = userSnapshot.getValue(Account.class);
                             txtWelcome.setText(userModel.getName() + "'s");
                             txtCash.setText(Float.toString(accountModel.getBalance()));
+                            txtTotalSpent.setText("  Total Spent: "+Float.toString(accountModel.getSpend()));
                             try {
                                 alarmModel = userSnapshot.getValue(Alarm.class);
                                 switchAlarm.setChecked(true);
@@ -182,10 +148,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             return;
                         }
                     }
-
                 }
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -203,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onStart() {
         super.onStart();
-      }
+    }
 
 
     public void clickCategories(View view) {
@@ -249,4 +213,3 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
     }
 }
-

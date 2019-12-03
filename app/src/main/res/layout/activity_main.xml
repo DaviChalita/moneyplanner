@@ -76,6 +76,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -161,12 +162,12 @@
                 android:weightSum="2">
 
                 <Button
-                    android:onClick="clickDeposit"
                     android:id="@+id/Cash_Deposit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
+                    android:onClick="clickDeposit"
                     android:text="deposit" />
 
                 <TextView
@@ -180,15 +181,14 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#FDE93D"
-                    android:text="withdraw"
-                    android:onClick="clickWithdraw"/>
+                    android:onClick="clickWithdraw"
+                    android:text="withdraw" />
 
 
             </LinearLayout>
 
 
         </LinearLayout>
-
 
 
         <LinearLayout
@@ -201,7 +201,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2.7"></LinearLayout>
+                android:layout_weight="2.7">
+
+                <TextView
+                    android:id="@+id/textViewTotalSpent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="30sp"
+                    tools:text="Total Spent:" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -232,7 +241,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:onClick="clickAlarmSwitch"/>
+                        android:onClick="clickAlarmSwitch" />
 
                 </LinearLayout>
 
