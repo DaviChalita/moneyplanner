@@ -1,6 +1,8 @@
 package com.dankook.moneyplanner.model;
 
-public class Alarm {
+import java.io.Serializable;
+
+public class Alarm implements Serializable {
     private String idAlarm;
     private float limit;
 
@@ -25,8 +27,8 @@ public class Alarm {
         return limit;
     }
 
-    public void setLimit(float limit) {
-        this.limit = limit;
+    public void setLimit(String limit) {
+        this.limit = Float.parseFloat(limit);
     }
 
     public boolean warnTheUser(float balance, float limit) {

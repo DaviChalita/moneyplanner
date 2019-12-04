@@ -14,34 +14,79 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 
+import com.dankook.moneyplanner.model.Account;
 import com.dankook.moneyplanner.model.Alarm;
+import com.dankook.moneyplanner.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AlarmActivity extends AppCompatActivity {
+
+    EditText limitText;
+    Button okBtn;
+    String limitString, id;
+    User userModel;
+    Account accountModel;
+    Alarm alarm;
+    private DatabaseReference mDatabase;
+    float limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
-        final Alarm alarmSet = new Alarm();
-        float limit = 0;
+
+        limitText = findViewById(R.id.limitText);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference("user");
 
-        Button pushButton = findViewById(R.id.pushButton);
-        pushButton.setOnClickListener(new Button.OnClickListener() {           // When press the pushButton >> entered limit value
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        userModel = (User) extras.getSerializable("user");
+        accountModel = (Account) extras.getSerializable("account");
+        System.out.println("foi pra tela de alarm");
+        System.out.println(userModel.getEmail());
+        System.out.println(accountModel.getBalance());
+
+        okBtn = findViewById(R.id.pushButton);
+        okBtn.setOnClickListener(new Button.OnClickListener() {           // When press the pushButton >> entered limit value
             @Override
             public void onClick(View view) {
-                EditText editText = findViewById(R.id.limitText);
-                String limitstring = editText.getText().toString();
-                float limit = Float.parseFloat(limitstring);
-                alarmSet.setLimit(limit);  //
+                id = accountModel.getId();
+                limitString = limitText.getText().toString();
+                limit = Float.parseFloat(limitString);
+                alarm = new Alarm(id, limit);
+
+                mDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                            User userSnapshotValue = userSnapshot.getValue(User.class);
+                            if(userSnapshotValue.getEmail().equals(userModel.getEmail())){
+                                mDatabase.child(userSnapshotValue.getId()).child("limit").setValue(limitString);
+                                return;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                finish();
             }
         });
 

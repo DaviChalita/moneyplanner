@@ -91,17 +91,19 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
                 newBalancetxt = String.valueOf(newBalance);
                 id = accountModel.getId();
                 accountModel.setBalance(Float.toString(newBalance));
-                System.out.println(accountModel.getBalance());
 
-                mDatabase.addValueEventListener(new ValueEventListener() {
+                try{
+                    mDatabase.child(id).child("balance").setValue(newBalancetxt);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                finish();
+                /*mDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                             User userSnapshotValue = userSnapshot.getValue(User.class);
                             if (userSnapshotValue.getEmail().equals(userModel.getEmail())) {
-                                System.out.println(userSnapshotValue.getEmail());
-                                System.out.println(email);
-                                System.out.println(userSnapshotValue.getId());
                                 mDatabase
                                         .child(userSnapshotValue.getId())
                                         .child("balance")
@@ -116,11 +118,7 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
 
                     }
                 });
-
-                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_LONG).show();
-                Intent myintent = new Intent(CashDepositActivity.this, MainActivity.class);
-                startActivity(myintent);
-                finish();
+                finish();*/
             }
         });
 
