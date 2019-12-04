@@ -11,18 +11,14 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dankook.moneyplanner.model.Account;
 import com.dankook.moneyplanner.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 
@@ -32,11 +28,9 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
     EditText et_card_deposit, txtSpend;
     Button btncardok;
     LinearLayout ll;
-    String email, name, balance, id, newBalancetxt, spend;
-    private FirebaseUser user;
+    String name, id, newBalancetxt, spend;
     float newBalance;
     private DatabaseReference mDatabase;
-    private FirebaseAuth mFirebaseAuth, fbAuth;
     User userModel;
     Account accountModel;
 
@@ -46,7 +40,6 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
         setContentView(R.layout.activity_cash_deposit);
 
         txtSpend = findViewById(R.id.Cash_Deposit);
-        Intent myintent = getIntent();
 
         ll = (LinearLayout) findViewById(R.id.ll);
         btncardok = (Button) findViewById(R.id.btn_cash_ok);
@@ -62,13 +55,10 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
         Bundle extras = intent.getExtras();
         userModel = (User) extras.getSerializable("user");
         accountModel = (Account) extras.getSerializable("account");
-        System.out.println(userModel.getEmail());
-        System.out.println(accountModel.getBalance());
-        //userModel = (User) intent.getSerializableExtra("user");
-        //accountModel = (Account) intent.getSerializableExtra("account");
 
         ll.setOnClickListener(myClickListener);
         btncardok.setOnClickListener(myClickListener);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +73,6 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
         btncardOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println(userModel.getEmail());
                 name = userModel.getName();
                 spend = txtSpend.getText().toString().trim();
                 newBalance = accountModel.getBalance() + Float.parseFloat(spend);
@@ -92,36 +80,14 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
                 id = accountModel.getId();
                 accountModel.setBalance(Float.toString(newBalance));
 
-                try{
+                try {
                     mDatabase.child(id).child("balance").setValue(newBalancetxt);
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 finish();
-                /*mDatabase.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                            User userSnapshotValue = userSnapshot.getValue(User.class);
-                            if (userSnapshotValue.getEmail().equals(userModel.getEmail())) {
-                                mDatabase
-                                        .child(userSnapshotValue.getId())
-                                        .child("balance")
-                                        .setValue(newBalancetxt);
-                                return;
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-                finish();*/
             }
         });
-
     }
 
     View.OnClickListener myClickListener = new View.OnClickListener() {
@@ -145,9 +111,5 @@ public class CashDepositActivity extends AppCompatActivity implements Serializab
     @Override
     protected void onStart() {
         super.onStart();
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser userStart = FirebaseAuth.getInstance().getCurrentUser();
-
     }
-
 }

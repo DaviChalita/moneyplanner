@@ -46,7 +46,7 @@ public class AlarmActivity extends AppCompatActivity {
 
         limitText = findViewById(R.id.limitText);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -56,9 +56,6 @@ public class AlarmActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         userModel = (User) extras.getSerializable("user");
         accountModel = (Account) extras.getSerializable("account");
-        System.out.println("foi pra tela de alarm");
-        System.out.println(userModel.getEmail());
-        System.out.println(accountModel.getBalance());
 
         okBtn = findViewById(R.id.pushButton);
         okBtn.setOnClickListener(new Button.OnClickListener() {           // When press the pushButton >> entered limit value
@@ -74,7 +71,7 @@ public class AlarmActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                             User userSnapshotValue = userSnapshot.getValue(User.class);
-                            if(userSnapshotValue.getEmail().equals(userModel.getEmail())){
+                            if (userSnapshotValue.getEmail().equals(userModel.getEmail())) {
                                 mDatabase.child(userSnapshotValue.getId()).child("limit").setValue(limitString);
                                 return;
                             }
@@ -89,14 +86,6 @@ public class AlarmActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-     /*
-        Intent balance = getbalance();// Get balance values from mainactivity
-
-        if (balance <= limit) {
-            createNotification();
-        }
-*/
     }
 
     @Override
@@ -135,6 +124,5 @@ public class AlarmActivity extends AppCompatActivity {
             manager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
         }
         manager.notify(1, builder.build());
-
     }
 }

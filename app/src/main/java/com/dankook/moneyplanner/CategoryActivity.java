@@ -40,12 +40,6 @@ public class CategoryActivity extends AppCompatActivity {
         Pie pie = AnyChart.pie();
         List<DataEntry> dataEntries = new ArrayList<>();
 
-/*
-        for(int i = 0; i<value.length; i++) {
-            value[i] = scan.nextInt();
-        }
-*/
-
         for (int i = 0; i < category.length; i++) {
             dataEntries.add(new ValueDataEntry(category[i], value[i]));
         }

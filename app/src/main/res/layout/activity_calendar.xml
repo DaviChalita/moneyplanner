@@ -17,16 +17,15 @@
         android:weightSum="3">
 
 
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/fui_transparent"
             android:gravity="center_vertical|center_horizontal"
             android:text="Calendar"
             android:textColor="#000000"
-            android:textSize="30dp"
-            android:background="@color/fui_transparent"/>
+            android:textSize="30dp" />
     </LinearLayout>
 
     <CalendarView
@@ -116,9 +115,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#D1D1D1"
             android:onClick="clickAccount"
             android:orientation="vertical"
-            android:background="#D1D1D1"
             android:weightSum="3">
 
             <ImageView
