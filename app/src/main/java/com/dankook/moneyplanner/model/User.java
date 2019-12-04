@@ -3,9 +3,9 @@ package com.dankook.moneyplanner.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    public static String id;
-    public static String email;
-    public static String name;
+    private String id;
+    private String email;
+    private String name;
 
     public User() {
 

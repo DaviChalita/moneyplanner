@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dankook.moneyplanner.model.Account;
 import com.dankook.moneyplanner.model.Alarm;
-import com.dankook.moneyplanner.model.Category;
 import com.dankook.moneyplanner.model.User;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -98,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     public void clickWithdraw(View view) {
-        System.out.println("account model balance "+accountModel.getBalance());
+        System.out.println("account model balance " + accountModel.getBalance());
         Toast.makeText(getApplicationContext(), "Cash Withdraw page", Toast.LENGTH_LONG).show();
         Intent myIntent = new Intent(MainActivity.this, CashWithdrawActivity.class);
         Bundle extras = new Bundle();
@@ -138,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             accountModel = userSnapshot.getValue(Account.class);
                             txtWelcome.setText(userModel.getName() + "'s");
                             txtCash.setText(Float.toString(accountModel.getBalance()));
-                            txtTotalSpent.setText("  Total Spent: "+Float.toString(accountModel.getSpend()));
+                            txtTotalSpent.setText("  Total Spent: " + Float.toString(accountModel.getSpend()));
                             try {
                                 alarmModel = userSnapshot.getValue(Alarm.class);
                                 switchAlarm.setChecked(true);
@@ -186,9 +183,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         if (switchAlarm.isChecked()) {
             Intent myIntent = new Intent(MainActivity.this, AlarmActivity.class);
             Bundle extras = new Bundle();
-            System.out.println("Indo para tela alarme");
-            System.out.println(userModel.getEmail());
-            System.out.println(accountModel.getBalance());
             extras.putSerializable("user", userModel);
             extras.putSerializable("account", accountModel);
             myIntent.putExtra("user", userModel);
